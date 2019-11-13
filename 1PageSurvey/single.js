@@ -1,12 +1,24 @@
 
+//1 Page Survey .JS
 Survey
-    .StylesManager
-    .applyTheme("default");
+.StylesManager
+.applyTheme("default");
 
 var json = {
-    title: "American History",
-    pages: [{
+title: "American History",
+showProgressBar: "bottom",
+showTimerPanel: "top",
+//maxTimeToFinishPage: 10,
+//maxTimeToFinish: 25,
+firstPageIsStarted: true,
+startSurveyText: "Start Quiz",
+pages: [
+    {
         questions: [
+            {
+                type: "html",
+                html: "The following Questions are about History. <br/>You have 10 seconds for every page and 25 seconds for the whole survey of 3 questions."
+            },
             {
                 type: "radiogroup",
                 name: "civilwar",
@@ -37,16 +49,19 @@ var json = {
                 correctAnswer: "The foundation of the British parliamentary system"
             }
         ]
-    }],
-    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
+    }
+],
+completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
 };
 
 window.survey = new Survey.Model(json);
 
 survey
-    .onComplete
-    .add(function (result) {
-        document.location = "singlethanks.html";
-    });
+.onComplete
+.add(function (result) {
+    document
+        .querySelector('#surveyResult')
+        .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+});
 
-$("#surveyElement").Survey({ model: survey });
+$("#surveyElement").Survey({model: survey});
