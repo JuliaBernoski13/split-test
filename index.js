@@ -16,8 +16,8 @@ app.use("/3PageSurvey", express.static(__dirname + "/3PageSurvey"));
 
 
 let aUrls = [
-    "/test1/",
-    "/test2/"
+    "/1PageSurvey/",
+    "/3PageSurvey/"
 ];
 
 app.all("/*", function(req, res) {
