@@ -11,8 +11,8 @@ let apiProxy = httpProxy.createProxy({
     changeOrigin: true
 });
 
-app.use("/test1", express.static(__dirname + "/test1"));
-app.use("/test2", express.static(__dirname + "/test2"));
+app.use("/1PageSurvey", express.static(__dirname + "/1PageSurvey"));
+app.use("/3PageSurvey", express.static(__dirname + "/3PageSurvey"));
 
 
 let aUrls = [
